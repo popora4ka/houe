@@ -6,7 +6,6 @@ if Key == "Oswasjad109" then
 else
     warn("KEY CHECK FAILED")
 end
-if Key ~= nil and Key == "Oswasjad109" then
 	local u1 = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 	local v2 = u1:CreateWindow({
 		Name = "TbiGui Window - Beta",
