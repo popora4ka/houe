@@ -1,3 +1,11 @@
+print("SCRIPT STARTED")
+print("Key:", tostring(Key))
+
+if Key == "Oswasjad109" then
+    print("KEY MATCHED")
+else
+    warn("KEY CHECK FAILED")
+end
 if Key ~= nil and Key == "Oswasjad109" then
 	local u1 = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 	local v2 = u1:CreateWindow({
