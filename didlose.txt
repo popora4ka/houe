@@ -1,0 +1,3339 @@
+if Key ~= nil and Key == "Oswasjad109" then
+	local u1 = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+	local v2 = u1:CreateWindow({
+		Name = "TbiGui Window - Beta",
+		Icon = 0,
+		LoadingTitle = "TbiGui Interface",
+		LoadingSubtitle = "by tbi",
+		Theme = "Default",
+		DisableRayfieldPrompts = false,
+		DisableBuildWarnings = false,
+		ConfigurationSaving = {
+			Enabled = false,
+			FolderName = nil,
+			FileName = "TBIGUI"
+		},
+		KeySystem = false,
+		KeySettings = {
+			Title = "Untitled",
+			Subtitle = "Key System",
+			Note = "No method of obtaining the key is provided",
+			FileName = "Key",
+			SaveKey = false,
+			GrabKeyFromSite = true,
+			Key = {
+				"Hello",
+				"hi"
+			}
+		}
+	})
+
+	function Notification(p1)
+		-- upvalues: u1 (ref)
+		u1:Notify({
+			Title = "Error",
+			Content = p1,
+			Duration = 3,
+			Image = nil
+		})
+	end
+	function InfoNotification(p2)
+		-- upvalues: u1 (ref)
+		u1:Notify({
+			Title = "Info",
+			Content = p2,
+			Duration = 3,
+			Image = nil
+		})
+	end
+	function MysteryNotification(p3, p4)
+		-- upvalues: u1 (ref)
+		u1:Notify({
+			Title = "Info for mystery pet need",
+			Content = p3,
+			Duration = p4,
+			Image = nil
+		})
+	end
+
+	local RunService = game:GetService("RunService")
+	local u4 = game:service("VirtualUser")
+	local LocalPlayer = game.Players.LocalPlayer
+	local inventory = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[LocalPlayer.Name].inventory
+	local _ = inventory.pets
+	local t1 = {}
+	local t2 = {}
+	local s1 = "None"
+	local s2 = "None"
+	local s3 = ""
+	local s4 = ""
+	local s5 = "https://discord.gg/TFUD4S7z6q"
+
+	tick()
+	tick()
+	tick()
+
+	local u15 = false
+	local u16 = false
+	local u17 = false
+	local n1 = 0
+	local n2 = 0
+	local n3 = 0
+	local n4 = 0
+	local u22 = false
+	local n5 = 50
+	local n6 = 2
+	local n7 = 0
+	local n8 = 1
+	local u27 = false
+	local vector3 = Vector3.new(200, 2, 200)
+	local color3 = Color3.new(0.231373, 0.231373, 0.231373)
+	local PlayerPlatform = nil
+	local s6 = ""
+	local s7 = ""
+	local n9 = 50
+	local u34 = false
+	local t3 = {}
+	local s8 = ""
+	local s9 = ""
+	local s10 = ""
+	local u39 = false
+	local u40 = false
+	local t4 = {
+		PetAutofarm = false,
+		AgePotionFarm = false,
+		AutoHatchEggs = false
+	}
+	local t5 = {
+		TransferBucksWithCashRegister = false,
+		TransferBucksWithMannequin = false
+	}
+	local t6 = {
+		SwitchOutPets = false,
+		FarmAllPets = false,
+		SwitchOutEggs = false,
+		HatchAllEggs = false
+	}
+	local t7 = {
+		ShootingStar = false
+	}
+	local u45 = nil
+
+	for _, v in next, getgc() do
+		if type(v) == "function" and islclosure(v) and table.find(getconstants(v), "LocationAPI/SetLocation") then
+			u45 = v
+
+			break
+		end
+	end
+
+	if not u45 then
+		error("Location function not found!")
+	end
+
+	local function u48(p5, p6, p7)
+		-- upvalues: u45 (ref)
+		u45(p5, p6, p7)
+	end
+	local function u49()
+		return workspace.Interiors:FindFirstChildWhichIsA("Model")
+	end
+	local function u50()
+		return workspace.HouseInteriors.blueprint:FindFirstChildWhichIsA("Model")
+	end
+	local function u51()
+		-- upvalues: u50 (ref)
+		local v323 = u50()
+
+		return v323 and v323.Name or false
+	end
+	local function u52()
+		-- upvalues: u49 (ref)
+		local v173 = u49()
+		local Name
+
+		if v173 and not v173.Name:find("MainMap") and not v173.Name:find("Neighborhood") then
+			Name = v173.Name
+
+			if Name then
+				return Name
+			end
+		end
+
+		Name = false
+
+		return Name
+	end
+	local function u53()
+		-- upvalues: u49 (ref)
+		local v158 = u49()
+
+		return v158 and (v158.Name:find("MainMap") and v158.Name) or false
+	end
+	local function u54()
+		-- upvalues: u49 (ref)
+		local v119 = u49()
+
+		return v119 and (v119.Name:find("Neighborhood") and v119.Name) or false
+	end
+	local function u55(p8, p9, p10, p11)
+		-- upvalues: u48 (ref)
+		u48(p8, p9, p10)
+
+		while not p11() do
+			task.wait()
+		end
+
+		return true
+	end
+	local function u56(p12)
+		-- upvalues: u52 (ref), u55 (ref)
+		if u52() ~= p12 then
+			return u55(p12, "MainDoor", {}, function()
+				-- upvalues: u52 (ref), p12 (ref)
+				return u52() == p12
+			end)
+		end
+
+		return true
+	end
+	local function u57()
+		-- upvalues: u55 (ref), u53 (ref)
+		return u55("MainMap", "Neighborhood/MainDoor", {}, u53)
+	end
+	local function u58()
+		-- upvalues: u55 (ref), LocalPlayer (ref), u51 (ref)
+		return u55("housing", "MainDoor", {
+			house_owner = LocalPlayer
+		}, u51)
+	end
+	local function u59()
+		-- upvalues: u55 (ref), u54 (ref)
+		return u55("Neighborhood", "MainDoor", {}, u54)
+	end
+
+	function GetNumberBeforeEqual(p13)
+		return string.match(p13, "^(%d+)")
+	end
+	function GetIdBeforeMinus(p14)
+		return string.match(p14, "^(.-)-")
+	end
+	function getLastSegment(p15)
+		return string.match(p15, ".*/(.*)")
+	end
+	function isTableEmpty(p16)
+		return next(p16) == nil
+	end
+	function GetIdInBracket(p17)
+		return string.match(p17, "%((.-)%)")
+	end
+	function GetMannequinPrice(p18)
+		return string.match(p18, "Price:%s*(%d+)")
+	end
+	function GetMannequin(p19)
+		local furniture = require(game.ReplicatedStorage.Fsys).load("ClientData").get_server(game.Players.LocalPlayer, "house_interior").furniture
+
+		for k, v in pairs(furniture) do
+			task.wait()
+
+			if v.id == "mannequins_2024_mannequin" then
+				for k2, v3 in pairs(v) do
+					if k2 == "outfit_version" and p19 == tostring(v3) then
+						return k
+					end
+				end
+			end
+		end
+
+		return false
+	end
+	function extractName(p20)
+		local v83 = string.find(p20, "!")
+		local v84 = string.find(p20, "::")
+
+		if not v83 then
+			if not v84 then
+				return p20
+			end
+
+			return string.sub(p20, 1, v84 - 1)
+		end
+
+		return string.sub(p20, 1, v83 - 1)
+	end
+	function IsPetEgg(p21)
+		local u339 = false
+		local ok, result = pcall(function()
+			-- upvalues: p21 (ref), u339 (ref)
+			local pets = require(game.ReplicatedStorage.Fsys).load("InventoryDB").pets
+
+			for k, v in pairs(pets) do
+				if k == p21 then
+					if v.is_egg then
+						u339 = true
+
+						return
+					end
+
+					u339 = false
+				end
+			end
+		end)
+
+		if ok then
+			if not u339 then
+				return false
+			end
+
+			return true
+		end
+
+		warn("Something went wrong while checking if pet is an egg: " .. result)
+
+		return false
+	end
+	function IsEggNotThere(p22)
+		local u233 = false
+		local ok, result = pcall(function()
+			-- upvalues: p22 (ref), u233 (ref)
+			local pets = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[game.Players.LocalPlayer.Name].inventory.pets
+
+			for k, _ in pairs(pets) do
+				task.wait()
+
+				if k == p22 then
+					u233 = true
+
+					return
+				end
+
+				u233 = false
+			end
+		end)
+
+		if ok then
+			if not u233 then
+				return true
+			end
+
+			return false
+		end
+
+		warn("Something went wrong while checking if egg is still there: " .. result)
+
+		return false
+	end
+	function CheckIfOtherAutofarm(p23)
+		-- upvalues: t4 (ref)
+		for k, v in pairs(t4) do
+			task.wait()
+
+			if k ~= p23 and k ~= "BabyAutofarm" and v == true then
+				Notification("Please turn off (" .. k .. ") to be able to use this one!")
+
+				return true
+			end
+		end
+
+		return false
+	end
+	function CheckIfOtherTransfer(p24)
+		-- upvalues: t5 (ref)
+		for k, v in pairs(t5) do
+			task.wait()
+
+			if k ~= p24 and v == true then
+				Notification("Please turn off (" .. k .. ") to be able to use this one!")
+
+				return true
+			end
+		end
+
+		return false
+	end
+	function CheckIfOtherExtra(p25)
+		-- upvalues: t6 (ref)
+		for k, v in pairs(t6) do
+			task.wait()
+
+			if k ~= p25 and v == true then
+				Notification("Please turn off (" .. k .. ") to be able to use this one!")
+
+				return true
+			end
+		end
+
+		return false
+	end
+	function GetPetNeeds(p26)
+		-- upvalues: u39 (ref)
+		local t8 = {}
+		local ailments = require(game.ReplicatedStorage.Fsys).load("ClientData").get_server(game.Players.LocalPlayer, "ailments_manager").ailments
+
+		for k, v in pairs(ailments) do
+			task.wait()
+
+			if k == p26 then
+				if not u39 then
+					for k3, v4 in pairs(v) do
+						for _, _ in pairs(v4) do
+							if v4.kind ~= "mystery" then
+								t8[v4.kind] = {
+									Id = k3
+								}
+							end
+						end
+					end
+				else
+					for k4, v5 in pairs(v) do
+						for _, _ in pairs(v5) do
+							t8[v5.kind] = {
+								Id = k4
+							}
+						end
+					end
+				end
+			end
+		end
+
+		return t8
+	end
+	function GetBabyNeeds()
+		return require(game.ReplicatedStorage.Fsys).load("ClientData").get_server(game.Players.LocalPlayer, "ailments_manager").baby_ailments or {}
+	end
+	function GetPlayerInterior()
+		-- upvalues: LocalPlayer (ref)
+		if not workspace:FindFirstChild("HouseInteriors").furniture:FindFirstChildWhichIsA("Folder") then
+			if not workspace.Interiors:FindFirstChildWhichIsA("Model") then
+				return nil
+			end
+
+			return extractName(workspace.Interiors:FindFirstChildWhichIsA("Model").Name)
+		end
+
+		if not string.find(workspace:FindFirstChild("HouseInteriors").furniture:FindFirstChildWhichIsA("Folder").Name, LocalPlayer.Name) and not string.find(workspace:FindFirstChild("HouseInteriors").blueprint:FindFirstChildWhichIsA("Model").Name, LocalPlayer.Name) then
+			if not workspace.Interiors:FindFirstChildWhichIsA("Model") then
+				return nil
+			end
+
+			return extractName(workspace.Interiors:FindFirstChildWhichIsA("Model").Name)
+		end
+
+		return "House"
+	end
+	function GetKindById(p27)
+		-- upvalues: t2 (ref)
+		for _, v in pairs(t2) do
+			if p27 == v.id then
+				return v.kind
+			end
+		end
+
+		return false
+	end
+	function RemovePetBcDone(p28, p29, p30, p31)
+		-- upvalues: t6 (ref), t2 (ref), s1 (ref), s2 (ref), t1 (ref)
+		if not t6.SwitchOutPets then
+			if not t6.FarmAllPets then
+				if not t6.SwitchOutEggs then
+					if t6.HatchAllEggs then
+						local ok, result = pcall(function()
+							UpdatePetDropdown()
+						end)
+
+						if not ok then
+							warn("Something went wrong while updating dropdown: " .. result .. " (4)")
+						else
+							if p28 ~= 1 then
+								if p28 == 2 then
+									for _, v in pairs(t2) do
+										task.wait()
+
+										if p30 ~= v.id and p31 ~= v.id and IsPetEgg(v.kind) then
+											s2 = v.id
+											SecondPetDropdown:Set({ t1[v.countid] })
+											UpdatePlayerPets()
+											InfoNotification("Successful egg changed")
+
+											return
+										end
+									end
+								end
+							else
+								for _, v in pairs(t2) do
+									task.wait()
+
+									if p30 ~= v.id and p31 ~= v.id and IsPetEgg(v.kind) then
+										s1 = v.id
+										FirstPetDropdown:Set({ t1[v.countid] })
+										UpdatePlayerPets()
+										InfoNotification("Successful egg changed")
+
+										return
+									end
+								end
+							end
+
+							if p28 ~= 1 then
+								if p28 == 2 then
+									s2 = "None"
+									SecondPetDropdown:Set({ "None" })
+									Notification("No more eggs available")
+								end
+							else
+								s1 = "None"
+								FirstPetDropdown:Set({ "None" })
+								Notification("No more eggs available")
+							end
+						end
+					end
+				else
+					local ok, result = pcall(function()
+						UpdatePetDropdown()
+					end)
+
+					if not ok then
+						warn("Something went wrong while updating dropdown: " .. result .. " (3)")
+					else
+						if p28 ~= 1 then
+							if p28 == 2 then
+								for _, v in pairs(t2) do
+									task.wait()
+
+									if p30 ~= v.id and p31 ~= v.id and p29 == v.kind then
+										s2 = v.id
+										SecondPetDropdown:Set({ t1[v.countid] })
+										UpdatePlayerPets()
+										InfoNotification("Successful egg changed")
+
+										return
+									end
+								end
+							end
+						else
+							for _, v in pairs(t2) do
+								task.wait()
+
+								if p30 ~= v.id and p31 ~= v.id and p29 == v.kind then
+									s1 = v.id
+									FirstPetDropdown:Set({ t1[v.countid] })
+									UpdatePlayerPets()
+									InfoNotification("Successful egg changed")
+
+									return
+								end
+							end
+						end
+
+						if p28 ~= 1 then
+							if p28 == 2 then
+								s2 = "None"
+								SecondPetDropdown:Set({ "None" })
+								Notification("No more same egg available")
+							end
+						else
+							s1 = "None"
+							FirstPetDropdown:Set({ "None" })
+							Notification("No more same egg available")
+						end
+
+						UpdatePlayerPets()
+					end
+				end
+			else
+				local ok, result = pcall(function()
+					UpdatePetDropdown()
+				end)
+
+				if not ok then
+					warn("Something went wrong while updating dropdown: " .. result .. " (2)")
+				else
+					if p28 ~= 1 then
+						if p28 == 2 then
+							for _, v in pairs(t2) do
+								task.wait()
+								GetKindById(s2)
+
+								if v.id ~= s1 and v.id ~= s2 and v.age < 6 then
+									s2 = v.id
+									SecondPetDropdown:Set({ t1[v.countid] })
+									UpdatePlayerPets()
+									InfoNotification("Successful pet changed")
+
+									return
+								end
+							end
+						end
+					else
+						for _, v in pairs(t2) do
+							task.wait()
+							GetKindById(s1)
+
+							if v.id ~= s1 and v.id ~= s2 and v.age < 6 then
+								s1 = v.id
+								FirstPetDropdown:Set({ t1[v.countid] })
+								UpdatePlayerPets()
+								InfoNotification("Successful pet changed")
+
+								return
+							end
+						end
+					end
+
+					if p28 ~= 1 then
+						if p28 == 2 then
+							s2 = "None"
+							SecondPetDropdown:Set({ "None" })
+							Notification("No more pets available")
+						end
+					else
+						s1 = "None"
+						FirstPetDropdown:Set({ "None" })
+						Notification("No more pets available")
+					end
+
+					UpdatePlayerPets()
+				end
+			end
+		else
+			local ok, result = pcall(function()
+				UpdatePetDropdown()
+			end)
+
+			if not ok then
+				warn("Something went wrong while updating dropdown: " .. result .. " (1)")
+			else
+				if p28 ~= 1 then
+					if p28 == 2 then
+						for _, v in pairs(t2) do
+							task.wait()
+
+							local v148 = GetKindById(s2)
+
+							if v.id ~= s1 and v.id ~= s2 and v148 == v.kind and v.age < 6 then
+								s2 = v.id
+								SecondPetDropdown:Set({ t1[v.countid] })
+								UpdatePlayerPets()
+								InfoNotification("Successful pet changed")
+
+								return
+							end
+						end
+					end
+				else
+					for _, v in pairs(t2) do
+						task.wait()
+
+						local v151 = GetKindById(s1)
+
+						if v.id ~= s1 and v.id ~= s2 and v151 == v.kind and v.age < 6 then
+							s1 = v.id
+							FirstPetDropdown:Set({ t1[v.countid] })
+							UpdatePlayerPets()
+							InfoNotification("Successful pet changed")
+
+							return
+						end
+					end
+				end
+
+				if p28 ~= 1 then
+					if p28 == 2 then
+						s2 = "None"
+						SecondPetDropdown:Set({ "None" })
+						Notification("No more of the same pet available")
+					end
+				else
+					s1 = "None"
+					FirstPetDropdown:Set({ "None" })
+					Notification("No more of the same pet available")
+				end
+
+				UpdatePlayerPets()
+			end
+		end
+	end
+	function GetCurrentPet(p32)
+		local t9 = {}
+		local ok, result = pcall(function()
+			-- upvalues: p32 (ref), t9 (ref)
+			for _, v in next, require(game.ReplicatedStorage.ClientModules.Game.PetEntities.PetEntityManager).get_local_owned_pet_entities() do
+				task.wait()
+
+				if string.find(v.unique_id, p32, 1, true) then
+					t9 = v
+				end
+			end
+		end)
+
+		if ok then
+			return t9
+		end
+
+		warn("Something went wrong with CurrentPet: " .. result)
+	end
+	function GetFurniture(p33)
+		local HouseInteriors = workspace:WaitForChild("HouseInteriors")
+
+		for _, child in pairs(HouseInteriors:WaitForChild("furniture"):GetChildren()) do
+			task.wait()
+
+			for _, child2 in pairs(child:GetChildren()) do
+				task.wait()
+
+				if p33 == child2.Name then
+					return getLastSegment(child.Name)
+				end
+			end
+		end
+
+		return false
+	end
+	function EquipPet(p34)
+		-- upvalues: t4 (ref)
+		local t10 = {
+			[1] = p34,
+			[2] = {
+				equip_as_last = false,
+				use_sound_delay = true
+			}
+		}
+
+		require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/Equip"):InvokeServer(unpack(t10))
+
+		local v92 = false
+		local timestamp = tick()
+
+		repeat
+			task.wait(0.1)
+
+			local pets = require(game.ReplicatedStorage.Fsys).load("ClientData").get_data()[game.Players.LocalPlayer.Name].equip_manager.pets
+
+			for _, v in pairs(pets) do
+				task.wait()
+
+				if p34 == v.unique then
+					v92 = true
+				end
+			end
+		until v92 or tick() - timestamp >= 10 or not t4.PetAutofarm and not t4.AgePotionFarm and not t4.AutoHatchEggs
+	end
+	function UnequipPet(p35)
+		local t11 = {
+			[1] = p35,
+			[2] = {
+				equip_as_last = false,
+				use_sound_delay = true
+			}
+		}
+
+		require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/Unequip"):InvokeServer(unpack(t11))
+	end
+	function UnequipAllPets()
+		local pets = require(game.ReplicatedStorage.Fsys).load("ClientData").get_data()[game.Players.LocalPlayer.Name].equip_manager.pets
+
+		for _, v in pairs(pets) do
+			task.wait()
+
+			if v.unique then
+				UnequipPet(v.unique)
+			end
+		end
+	end
+	function GetPetAge(p36)
+		-- upvalues: LocalPlayer (ref)
+		local pets = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[LocalPlayer.Name].inventory.pets
+
+		for k, v in pairs(pets) do
+			if k == p36 and v.properties then
+				return v.properties.age
+			end
+		end
+
+		return false
+	end
+	function UpdatePlayerPets()
+		-- upvalues: s1 (ref), s2 (ref)
+		UnequipAllPets()
+
+		if s1 ~= "None" then
+			EquipPet(s1)
+		end
+
+		if s2 ~= "None" then
+			EquipPet(s2)
+		end
+	end
+	function ResetPlayerPets()
+		-- upvalues: s1 (ref), s2 (ref)
+		if s1 ~= "None" then
+			s1 = "None"
+			FirstPetDropdown:Set({ "None" })
+		end
+
+		if s2 ~= "None" then
+			s2 = "None"
+			SecondPetDropdown:Set({ "None" })
+		end
+	end
+	function CheckPlayerHouseLocked()
+		task.spawn(function()
+			while true do
+				task.wait(0.3)
+
+				if require(game.ReplicatedStorage.ClientModules.Game.HouseClient).is_door_locked() then
+					local t12 = {
+						[1] = false
+					}
+
+					require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/SetDoorLocked"):InvokeServer(unpack(t12))
+					InfoNotification("Unlocked house! The house must be unlocked for the script to work properly")
+				end
+			end
+		end)
+	end
+
+	CheckPlayerHouseLocked()
+
+	local function u60(p37)
+		-- upvalues: LocalPlayer (ref), u22 (ref), n5 (ref), RunService (ref), n7 (ref), n6 (ref), n8 (ref)
+		local u166 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+		local Humanoid = u166:WaitForChild("Humanoid")
+
+		if not p37 then
+			u22 = false
+			RunService:UnbindFromRenderStep("CircleMovement")
+			Humanoid:Move(Vector3.new(0, 0, 0), false)
+			Humanoid:MoveTo(u166.PrimaryPart.Position)
+			task.spawn(function()
+				-- upvalues: Humanoid (ref)
+				task.wait(0.1)
+				Humanoid.Jump = true
+			end)
+		else
+			if u22 then
+				return
+			end
+
+			u22 = true
+
+			local function u168(p38, p39)
+				-- upvalues: n5 (ref)
+				local v381 = math.cos(p39) * n5
+				local v382 = math.sin(p39) * n5
+
+				return p38 + Vector3.new(v381, 0, v382)
+			end
+
+			local PrimaryPartPosition = u166.PrimaryPart.Position
+			local n10 = 0
+
+			RunService:BindToRenderStep("CircleMovement", Enum.RenderPriority.Character.Value, function(p40)
+				-- upvalues: u22 (ref), n7 (ref), n6 (ref), u168 (ref), PrimaryPartPosition (ref), Humanoid (ref), u166 (ref), n10 (ref), n8 (ref)
+				if u22 then
+					n7 = n7 + n6 * p40
+
+					local v378 = u168(PrimaryPartPosition, n7)
+
+					Humanoid:MoveTo(v378)
+					PrimaryPartPosition = u166.PrimaryPart.Position
+					n10 = n10 + p40
+
+					if n10 >= n8 then
+						Humanoid.Jump = true
+						n10 = 0
+					end
+
+					return
+				end
+			end)
+		end
+	end
+
+	function isOnlyLetters(p41)
+		return p41:match("^[A-Za-z]+$") ~= nil
+	end
+	function updatePlatformForLocalPlayer()
+		-- upvalues: LocalPlayer (ref), PlayerPlatform (ref), vector3 (ref), color3 (ref)
+		if LocalPlayer and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+			local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
+
+			if workspace:FindFirstChild("PlayerPlatform") then
+				PlayerPlatform = workspace:FindFirstChild("PlayerPlatform")
+			end
+
+			if not PlayerPlatform and not workspace:FindFirstChild("PlayerPlatform") then
+				PlayerPlatform = Instance.new("Part")
+				PlayerPlatform.Size = vector3
+				PlayerPlatform.Color = color3
+				PlayerPlatform.Anchored = true
+				PlayerPlatform.CanCollide = true
+				PlayerPlatform.Name = "PlayerPlatform"
+				PlayerPlatform.Parent = workspace
+			end
+
+			if math.abs(PlayerPlatform.Position.Y - (HumanoidRootPart.Position.Y - (HumanoidRootPart.Size.Y / 2 + PlayerPlatform.Size.Y / 2) - 2)) > 10 then
+				PlayerPlatform.Position = HumanoidRootPart.Position - Vector3.new(0, HumanoidRootPart.Size.Y / 2 + PlayerPlatform.Size.Y / 2 + 2, 0)
+			end
+
+			PlayerPlatform.Color = color3
+
+			return
+		end
+	end
+	function SetPlatformForPlayer(p42)
+		-- upvalues: u27 (ref)
+		u27 = p42
+
+		if u27 then
+			spawn(function()
+				-- upvalues: u27 (ref)
+				while u27 do
+					updatePlatformForLocalPlayer()
+					task.wait(0.5)
+				end
+			end)
+		end
+	end
+	function DeleteAllPlatforms()
+		-- upvalues: PlayerPlatform (ref)
+		for _, child in pairs(workspace:GetChildren()) do
+			task.wait()
+
+			if child:IsA("Part") and child.Name == "PlayerPlatform" then
+				child:Destroy()
+			end
+		end
+
+		PlayerPlatform = nil
+	end
+
+	local u61 = false
+
+	function SetDropDown(p43)
+		-- upvalues: u61 (ref), s1 (ref), s2 (ref)
+		u61 = true
+
+		if p43 == "1" then
+			wait(0.2)
+			Notification("Dont select the same Pet")
+			FirstPetDropdown:Set({ "None" })
+			s1 = "None"
+		end
+
+		if p43 == "2" then
+			wait(0.2)
+			Notification("Dont select the same Pet")
+			SecondPetDropdown:Set({ "None" })
+			s2 = "None"
+		end
+
+		if p43 == "3" then
+			wait(0.2)
+			Notification("Please select Main Pet first")
+			SecondPetDropdown:Set({ "None" })
+			s2 = "None"
+		end
+
+		if p43 == "4" then
+			wait(0.2)
+			Notification("You dont have 2x pets equip")
+			SecondPetDropdown:Set({ "None" })
+			s2 = "None"
+		end
+
+		u61 = false
+	end
+	function UpdatePetDropdown()
+		-- upvalues: t2 (ref), t1 (ref), LocalPlayer (ref)
+		t2 = {}
+		t1 = {}
+
+		local pets = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[LocalPlayer.Name].inventory.pets
+		local t13 = {}
+
+		for k, v in pairs(pets) do
+			task.wait()
+
+			if v.id ~= "practice_dog" then
+				table.insert(t13, {
+					id = k,
+					name = v.id,
+					age = v.properties.age
+				})
+			end
+		end
+
+		table.sort(t13, function(p44, p45)
+			return p44.name:lower() < p45.name:lower()
+		end)
+
+		for i, v in ipairs(t13) do
+			t1[i] = i .. "=" .. v.name .. ": " .. v.age
+			t2[i] = {
+				id = v.id,
+				kind = v.name,
+				age = v.age,
+				countid = i
+			}
+		end
+
+		FirstPetDropdown:Refresh(t1)
+		SecondPetDropdown:Refresh(t1)
+	end
+	function UpdatePetDropdownForSearch(p46)
+		-- upvalues: t1 (ref)
+		local t14 = {}
+
+		for _, v in pairs(t1) do
+			task.wait()
+
+			if string.find(v:lower(), p46:lower()) then
+				table.insert(t14, v)
+			end
+		end
+
+		FirstPetDropdown:Refresh(t14)
+		SecondPetDropdown:Refresh(t14)
+	end
+	function PlayerToBaby()
+		local t15 = {
+			[1] = "Babies",
+			[2] = {
+				dont_respawn = true,
+				source_for_logging = "avatar_editor"
+			}
+		}
+
+		require(game.ReplicatedStorage.Fsys).load("RouterClient").get("TeamAPI/ChooseTeam"):InvokeServer(unpack(t15))
+	end
+	function PlayerToParent()
+		local t16 = {
+			[1] = "Parents",
+			[2] = {
+				dont_respawn = true,
+				source_for_logging = "avatar_editor"
+			}
+		}
+
+		require(game.ReplicatedStorage.Fsys).load("RouterClient").get("TeamAPI/ChooseTeam"):InvokeServer(unpack(t16))
+	end
+
+	local v62 = v2:CreateTab("Main", "monitor")
+
+	v62:CreateSection("Main")
+	v62:CreateLabel("This adopt me script is in beta and still under development! There may still be bugs", "info", nil, false)
+	v62:CreateDivider()
+	v62:CreateSlider({
+		Name = "Player Walk Speed",
+		Range = {
+			0,
+			100
+		},
+		Increment = 1,
+		Suffix = "WalkSpeed",
+		CurrentValue = 16,
+		Flag = "Slider1",
+		Callback = function(p47)
+			local LocalPlayer2 = game.Players.LocalPlayer;
+
+			(LocalPlayer2.Character or LocalPlayer2.CharacterAdded:Wait()):WaitForChild("Humanoid").WalkSpeed = p47
+		end
+	})
+	v62:CreateSlider({
+		Name = "Player Jump Power",
+		Range = {
+			0,
+			250
+		},
+		Increment = 1,
+		Suffix = "JumpPower",
+		CurrentValue = 50,
+		Flag = "Slider2",
+		Callback = function(p48)
+			local LocalPlayer3 = game.Players.LocalPlayer;
+
+			(LocalPlayer3.Character or LocalPlayer3.CharacterAdded:Wait()):WaitForChild("Humanoid").JumpPower = p48
+		end
+	})
+	v62:CreateToggle({
+		Name = "Anti Afk",
+		CurrentValue = false,
+		Flag = "ToggleAfk",
+		Callback = function(p49)
+			-- upvalues: u15 (ref)
+			u15 = p49
+		end
+	})
+	game:service("Players").LocalPlayer.Idled:Connect(function()
+		-- upvalues: u15 (ref), u4 (ref)
+		if u15 then
+			u4:CaptureController()
+			u4:ClickButton2(Vector2.new())
+		end
+	end)
+
+	local v63 = v2:CreateTab("Autofarm", "mouse-pointer")
+
+	v63:CreateSection("Info")
+
+	local u64 = v63:CreateLabel("You earned: 0 Bucks", "circle-dollar-sign", nil, false)
+	local u65 = v63:CreateLabel("You farmed: 0 Age Potions", "cup-soda", nil, false)
+
+	function UpdatePlayerInfo()
+		-- upvalues: n2 (ref), LocalPlayer (ref), n4 (ref), u17 (ref), n1 (ref), n3 (ref), u64 (ref), u65 (ref)
+		task.spawn(function()
+			-- upvalues: n2 (ref), LocalPlayer (ref), n4 (ref), u17 (ref), n1 (ref), n3 (ref), u64 (ref), u65 (ref)
+			local _, _ = pcall(function()
+				-- upvalues: n2 (ref), LocalPlayer (ref), n4 (ref)
+				n2 = require(game.ReplicatedStorage.Fsys).load("ClientData").get_data()[game.Players.LocalPlayer.Name].money
+
+				local n11 = 0
+				local food = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[LocalPlayer.Name].inventory.food
+
+				for _, v in pairs(food) do
+					if v.kind == "pet_age_potion" then
+						n11 = n11 + 1
+					end
+				end
+
+				n4 = n11
+			end)
+
+			while true do
+				task.wait(2)
+
+				local _, _ = pcall(function()
+					-- upvalues: u17 (ref), LocalPlayer (ref), n2 (ref), n1 (ref), n4 (ref), n3 (ref), u64 (ref), u65 (ref)
+					if not u17 then
+						local money = require(game.ReplicatedStorage.Fsys).load("ClientData").get_data()[game.Players.LocalPlayer.Name].money
+						local food = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[LocalPlayer.Name].inventory.food
+						local n12 = 0
+
+						for _, v in pairs(food) do
+							if v.kind == "pet_age_potion" then
+								n12 = n12 + 1
+							end
+						end
+
+						if money > n2 then
+							n1 = n1 + (money - n2)
+						end
+
+						if n12 > n4 then
+							n3 = n3 + (n12 - n4)
+						end
+
+						n4 = n12
+						n2 = money
+						u64:Set("You earned: " .. n1 .. " Bucks", "circle-dollar-sign", nil, false)
+						u65:Set("You farmed: " .. n3 .. " Age Potions", "cup-soda", nil, false)
+					end
+				end)
+			end
+		end)
+	end
+
+	UpdatePlayerInfo()
+	v63:CreateToggle({
+		Name = "Disable Information (Might reduce lags)",
+		CurrentValue = false,
+		Flag = "ToggleInfo",
+		Callback = function(p50)
+			-- upvalues: u17 (ref)
+			u17 = p50
+		end
+	})
+	v63:CreateSection("Settings")
+	v63:CreateColorPicker({
+		Name = "Pick Color for Platform",
+		Color = Color3.new(0.231373, 0.231373, 0.231373),
+		Flag = "ColorPicker1",
+		Callback = function(p51)
+			-- upvalues: color3 (ref)
+			color3 = p51
+		end
+	})
+	v63:CreateButton({
+		Name = "Destroy Platform",
+		Callback = function()
+			DeleteAllPlatforms()
+		end
+	})
+	v63:CreateSection("Pet Selection")
+	v63:CreateLabel("Info for the Dropdown: (Order=PetId: PetAge)", "info", nil, false)
+	v63:CreateInput({
+		Name = "Search Pet",
+		CurrentValue = "",
+		PlaceholderText = "Write the pet name here",
+		RemoveTextAfterFocusLost = false,
+		Flag = "Input1",
+		Callback = function(p52)
+			if not isOnlyLetters(p52) then
+				if p52 ~= "" then
+					Notification("Be sure that you only use letters (a-z)")
+				else
+					UpdatePetDropdown()
+				end
+			else
+				UpdatePetDropdownForSearch(p52)
+			end
+		end
+	})
+	FirstPetDropdown = v63:CreateDropdown({
+		Name = "Select First Pet",
+		Options = t1,
+		CurrentOption = { "None" },
+		MultipleOptions = false,
+		Flag = "Dropdown1",
+		Callback = function(p53)
+			-- upvalues: t2 (ref), s2 (ref), s1 (ref)
+			for k, _ in pairs(p53) do
+				if p53[k] ~= "None" then
+					local id = t2[tonumber(GetNumberBeforeEqual(p53[k]))].id
+
+					if id == s2 or id == nil then
+						if p53[k] ~= "None" then
+							SetDropDown("1")
+
+							return
+						end
+					else
+						s1 = id
+						UpdatePlayerPets()
+					end
+				end
+			end
+		end
+	})
+	SecondPetDropdown = v63:CreateDropdown({
+		Name = "Select Second Pet",
+		Options = t1,
+		CurrentOption = { "None" },
+		MultipleOptions = false,
+		Flag = "Dropdown1",
+		Callback = function(p54)
+			-- upvalues: u61 (ref), t2 (ref), s1 (ref), s2 (ref)
+			if not u61 then
+				if not require(game.ReplicatedStorage.Fsys).load("ClientData").get("subscription_manager").equip_2x_pets.active then
+					SetDropDown("4")
+				else
+					for k, _ in pairs(p54) do
+						if p54[k] ~= "None" then
+							local id = t2[tonumber(GetNumberBeforeEqual(p54[k]))].id
+
+							if s1 == "None" then
+								if p54[k] ~= "None" then
+									SetDropDown("3")
+
+									return
+								end
+							elseif id == s1 or id == nil then
+								if p54[k] ~= "None" then
+									SetDropDown("2")
+
+									return
+								end
+							else
+								s2 = id
+								UpdatePlayerPets()
+							end
+						end
+					end
+				end
+
+				return
+			end
+		end
+	})
+	UpdatePetDropdown()
+	v63:CreateButton({
+		Name = "Refresh Pets Dropdown",
+		Callback = function()
+			UpdatePetDropdown()
+		end
+	})
+	v63:CreateButton({
+		Name = "Reset Pets Dropdown",
+		Callback = function()
+			ResetPlayerPets()
+		end
+	})
+	v63:CreateSection("Pet Autofarm")
+
+	local u66 = v63:CreateToggle({
+		Name = "Autofarm selected Pets",
+		CurrentValue = false,
+		Flag = "Toggle1",
+		Callback = function(p55)
+			-- upvalues: t4 (ref)
+			t4.PetAutofarm = p55
+
+			if not p55 then
+				SetPlatformForPlayer(false)
+			else
+				AutoFarmPetFunc()
+			end
+		end
+	})
+	local u67 = v63:CreateToggle({
+		Name = "Autofarm Age Potions",
+		CurrentValue = false,
+		Flag = "Toggle3",
+		Callback = function(p56)
+			-- upvalues: t4 (ref)
+			t4.AgePotionFarm = p56
+
+			if not p56 then
+				SetPlatformForPlayer(false)
+			else
+				AutoFarmAgePotionFunc()
+			end
+		end
+	})
+	local u68 = v63:CreateToggle({
+		Name = "Autohatch Eggs",
+		CurrentValue = false,
+		Flag = "Toggle31",
+		Callback = function(p57)
+			-- upvalues: t4 (ref)
+			t4.AutoHatchEggs = p57
+
+			if not p57 then
+				SetPlatformForPlayer(false)
+			else
+				AutoHatchEggsFunc()
+			end
+		end
+	})
+
+	v63:CreateSection("Baby Autofarm")
+
+	local u69 = v63:CreateToggle({
+		Name = "Autofarm Baby",
+		CurrentValue = false,
+		Flag = "Toggle131",
+		Callback = function(p58)
+			-- upvalues: u40 (ref)
+			u40 = p58
+
+			if not p58 then
+				PlayerToParent()
+			else
+				AutoFarmBabyFunc()
+			end
+		end
+	})
+
+	function AutoFarmBabyFunc()
+		-- upvalues: t4 (ref), u69 (ref), u40 (ref)
+		if t4.AgePotionFarm or t4.AutoHatchEggs or t4.PetAutofarm then
+			PlayerToBaby()
+		else
+			task.wait(0.2)
+			u69:Set(false)
+			u40 = false
+			Notification("You must have activated one of the pet autofarms")
+		end
+	end
+
+	v63:CreateSection("Extras")
+
+	local u70 = v63:CreateToggle({
+		Name = "Do mystery pet need",
+		CurrentValue = false,
+		Flag = "Toggle0",
+		Callback = function(p59)
+			-- upvalues: u39 (ref)
+			if not p59 then
+				u39 = false
+			else
+				DoMysteryPetNeed()
+			end
+		end
+	})
+
+	v63:CreateDivider()
+
+	local u71 = v63:CreateToggle({
+		Name = "Switch out same Pet when Fullgrown",
+		CurrentValue = false,
+		Flag = "Toggle2",
+		Callback = function(p60)
+			-- upvalues: t6 (ref)
+			if not p60 then
+				t6.SwitchOutPets = false
+			else
+				PetSwitchOutToggleFunc()
+			end
+		end
+	})
+
+	function PetSwitchOutToggleFunc()
+		-- upvalues: t6 (ref), u71 (ref)
+		if CheckIfOtherExtra("SwitchOut") then
+			wait(0.2)
+			u71:Set(false)
+			t6.SwitchOutPets = false
+		else
+			t6.SwitchOutPets = true
+		end
+	end
+
+	local u72 = v63:CreateToggle({
+		Name = "Farm all pets (will switch to random pet)",
+		CurrentValue = false,
+		Flag = "Toggle6",
+		Callback = function(p61)
+			-- upvalues: t6 (ref)
+			if not p61 then
+				t6.FarmAllPets = false
+			else
+				FarmAllPetsToggleFunc()
+			end
+		end
+	})
+
+	function FarmAllPetsToggleFunc()
+		-- upvalues: t6 (ref), u72 (ref)
+		if CheckIfOtherExtra("FarmAllPets") then
+			wait(0.2)
+			u72:Set(false)
+			t6.FarmAllPets = false
+		else
+			t6.FarmAllPets = true
+		end
+	end
+
+	v63:CreateDivider()
+
+	local u73 = v63:CreateToggle({
+		Name = "Switch out same Egg when hatched",
+		CurrentValue = false,
+		Flag = "Toggle21",
+		Callback = function(p62)
+			-- upvalues: t6 (ref)
+			if not p62 then
+				t6.SwitchOutEggs = false
+			else
+				EggSwitchOutToggleFunc()
+			end
+		end
+	})
+
+	function EggSwitchOutToggleFunc()
+		-- upvalues: t6 (ref), u73 (ref)
+		if CheckIfOtherExtra("SwitchOutEggs") then
+			wait(0.2)
+			u73:Set(false)
+			t6.SwitchOutEggs = false
+		else
+			t6.SwitchOutEggs = true
+		end
+	end
+
+	v63:CreateToggle({
+		Name = "Hatch all Eggs (will switch to random egg)",
+		CurrentValue = false,
+		Flag = "Toggle61",
+		Callback = function(p63)
+			-- upvalues: t6 (ref)
+			if not p63 then
+				t6.HatchAllEggs = false
+			else
+				HatchAllEggsToggleFunc()
+			end
+		end
+	})
+
+	function HatchAllEggsToggleFunc()
+		-- upvalues: t6 (ref), u68 (ref)
+		if CheckIfOtherExtra("HatchAllEggs") then
+			wait(0.2)
+			u68:Set(false)
+			t6.HatchAllEggs = false
+		else
+			t6.HatchAllEggs = true
+		end
+	end
+
+	v63:CreateSection("Events")
+	v63:CreateButton({
+		Name = "Farm All Shooting Stars",
+		Callback = function()
+			FarmShootingStar()
+		end
+	})
+
+	local v74 = v2:CreateTab("Bucks transfer", "hand-coins")
+
+	v74:CreateSection("Settings")
+	v74:CreateToggle({
+		Name = "Disable 'Okay' Dialogs",
+		CurrentValue = false,
+		Flag = "Toggle31",
+		Callback = function(p64)
+			-- upvalues: u34 (ref)
+			u34 = p64
+
+			if p64 then
+				DisableDialog()
+			end
+		end
+	})
+	v74:CreateSection("Cash Register")
+	v74:CreateLabel("Transfer up to 150 bucks every 2 minutes", "info", nil, false)
+
+	local u75 = v74:CreateLabel("Scan info: none", "info", nil, false)
+
+	v74:CreateButton({
+		Name = "Scan for Cash Register",
+		Callback = function()
+			ScanForRegister()
+		end
+	})
+	v74:CreateSlider({
+		Name = "Amount of bucks to pay to cash register",
+		Range = {
+			1,
+			50
+		},
+		Increment = 1,
+		Suffix = "Bucks",
+		CurrentValue = 50,
+		Flag = "Register",
+		Callback = function(p65)
+			-- upvalues: n9 (ref)
+			n9 = p65
+		end
+	})
+	v74:CreateDivider()
+
+	local u76 = v74:CreateToggle({
+		Name = "Transfer bucks with cash register",
+		CurrentValue = false,
+		Flag = "Toggle32",
+		Callback = function(p66)
+			-- upvalues: t5 (ref)
+			t5.TransferBucksWithCashRegister = p66
+
+			if p66 then
+				FarmWithRegisterFunc()
+			end
+		end
+	})
+
+	v74:CreateSection("Mannequin")
+	v74:CreateLabel("Transfer up to 300 bucks every 2 minutes", "info", nil, false)
+
+	local u77 = v74:CreateLabel("Scan info: none", "info", nil, false)
+
+	v74:CreateButton({
+		Name = "Scan for Mannequin",
+		Callback = function()
+			ScanForMannequin()
+		end
+	})
+	MannequinDropdown = v74:CreateDropdown({
+		Name = "Mannequins",
+		Options = t3,
+		CurrentOption = { "None" },
+		MultipleOptions = false,
+		Flag = "Dropdown3",
+		Callback = function(p67)
+			-- upvalues: s8 (ref), s10 (ref)
+			for _, v in pairs(p67) do
+				s8 = v
+				s10 = GetMannequin(GetIdInBracket(s8))
+			end
+		end
+	})
+	v74:CreateDivider()
+
+	local u78 = v74:CreateToggle({
+		Name = "Transfer bucks with mannequin",
+		CurrentValue = false,
+		Flag = "Toggle33",
+		Callback = function(p68)
+			-- upvalues: t5 (ref)
+			t5.TransferBucksWithMannequin = p68
+
+			if p68 then
+				FarmWithMannequinFunc()
+			end
+		end
+	})
+	local v79 = v2:CreateTab("Misc", "circle-ellipsis")
+
+	v79:CreateSection("Discord")
+	v79:CreateLabel("Any problems? Join our discord server below", "circle-help", nil, false)
+	v79:CreateButton({
+		Name = "Copy discord link to clipboard",
+		Callback = function()
+			-- upvalues: s5 (ref)
+			setclipboard(tostring(s5))
+			InfoNotification("Copied discord link")
+		end
+	})
+	v79:CreateSection("Infos")
+	v79:CreateParagraph({
+		Title = "Furniture that the script automatically buys if not available in the house:",
+		Content = "- BasicCrib\n- StylishShower\n- AilmentsRefresh2024CheapWaterBowl\n- AilmentsRefresh2024CheapFoodBowl\n- Toilet"
+	})
+
+	function FarmWithRegisterFunc()
+		-- upvalues: t5 (ref), s6 (ref), s7 (ref), n9 (ref), u76 (ref)
+		task.spawn(function()
+			-- upvalues: t5 (ref), s6 (ref), s7 (ref), n9 (ref), u76 (ref)
+			if CheckIfOtherTransfer("TransferBucksWithCashRegister") then
+				wait(0.2)
+				u76:Set(false)
+				t5.TransferBucksWithCashRegister = false
+			else
+				while t5.TransferBucksWithCashRegister do
+					task.wait()
+
+					if s6 == "" or s7 == "" then
+						wait(0.2)
+						u76:Set(false)
+						t5.TransferBucksWithCashRegister = false
+						Notification("Please scan for a cash register first!")
+					else
+						for _ = 1, 3 do
+							task.wait()
+
+							if t5.TransferBucksWithCashRegister then
+								local t17 = {
+									[1] = s7,
+									[2] = s6,
+									[3] = "UseBlock",
+									[4] = n9,
+									[5] = game:GetService("Players").LocalPlayer.Character
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateFurniture"):InvokeServer(unpack(t17))
+								task.wait(1)
+							end
+						end
+
+						local n13 = 0
+
+						repeat
+							task.wait(1)
+							n13 = n13 + 1
+						until n13 > 125 or not t5.TransferBucksWithCashRegister
+					end
+				end
+			end
+		end)
+	end
+	function FarmWithMannequinFunc()
+		-- upvalues: t5 (ref), s10 (ref), s9 (ref), s8 (ref), u78 (ref)
+		task.spawn(function()
+			-- upvalues: t5 (ref), s10 (ref), s9 (ref), s8 (ref), u78 (ref)
+			if CheckIfOtherTransfer("TransferBucksWithMannequin") then
+				wait(0.2)
+				u78:Set(false)
+				t5.TransferBucksWithMannequin = false
+			else
+				while t5.TransferBucksWithMannequin do
+					task.wait()
+
+					if s10 == "" or s9 == "" then
+						wait(0.2)
+						u78:Set(false)
+						t5.TransferBucksWithMannequin = false
+						Notification("Please scan for a mannequin first!")
+					else
+						for _ = 1, 3 do
+							task.wait()
+
+							if t5.TransferBucksWithMannequin then
+								local outfits = require(game.ReplicatedStorage.Fsys).load("ClientData").get_data()[game.Players.LocalPlayer.Name].outfits
+								local t18 = {}
+
+								for _, v in pairs(outfits) do
+									task.wait()
+									table.insert(t18, v.name)
+								end
+
+								local t19 = {
+									[1] = s9,
+									[2] = s10,
+									[3] = GetIdInBracket(s8),
+									[4] = tonumber(GetMannequinPrice(s8))
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("AvatarAPI/BuyMannequinOutfit"):InvokeServer(unpack(t19))
+								task.wait(1)
+
+								local outfits2 = require(game.ReplicatedStorage.Fsys).load("ClientData").get_data()[game.Players.LocalPlayer.Name].outfits
+
+								for _, v in pairs(outfits2) do
+									task.wait()
+
+									for _, _ in pairs(t18) do
+										if not table.find(t18, v.name) then
+											local t20 = {
+												[1] = "player",
+												[2] = v.name
+											}
+
+											require(game.ReplicatedStorage.Fsys).load("RouterClient").get("AvatarAPI/DeleteOutfit"):FireServer(unpack(t20))
+										end
+									end
+								end
+							end
+
+							task.wait(1)
+						end
+					end
+
+					task.wait(1)
+
+					if not (0 + 1 > 125) and t5.TransferBucksWithMannequin then
+						return
+					end
+				end
+			end
+		end)
+	end
+	function DisableDialog()
+		-- upvalues: u34 (ref)
+		task.spawn(function()
+			-- upvalues: u34 (ref)
+			if u34 then
+				while u34 do
+					local NormalDialog = game.Players.LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("DialogApp").Dialog.NormalDialog
+
+					task.wait()
+
+					if not NormalDialog.Visible then
+						NormalDialog.Parent.Parent.Enabled = true
+					else
+						NormalDialog.Parent.Parent.Enabled = false
+					end
+				end
+
+				game.Players.LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("DialogApp").Dialog.NormalDialog.Parent.Parent.Enabled = true
+			end
+		end)
+	end
+	function ScanForRegister()
+		-- upvalues: s6 (ref), s7 (ref), u75 (ref)
+		s6 = ""
+		s7 = ""
+
+		local children = workspace.HouseInteriors:WaitForChild("furniture"):GetChildren()
+
+		for _, v in pairs(children) do
+			task.wait()
+
+			if not v:IsA("Folder") or not v:FindFirstChildWhichIsA("Model") then
+				Notification("You must be in a house to scan")
+				u75:Set("Scan info: failed", "circle-x", nil, false)
+
+				return
+			end
+
+			if string.find(v.Name, game.Players.LocalPlayer.Name) then
+				Notification("you can't scan in your own house")
+				u75:Set("Scan info: failed", "circle-x", nil, false)
+
+				return
+			end
+
+			if v:FindFirstChild("CashRegister") then
+				s6 = getLastSegment(v.Name)
+				s7 = require(game.ReplicatedStorage.Fsys).load("ClientData").get_server(game.Players.LocalPlayer, "house_interior").player
+
+				if not string.find(s6, "f-") then
+					Notification("something went wrong with the scanning")
+					u75:Set("Scan info: failed", "circle-x", nil, false)
+					s6 = ""
+					s7 = ""
+				else
+					u75:Set("Scan info: successful", "circle-check", nil, false)
+				end
+
+				return
+			end
+		end
+
+		u75:Set("Scan info: failed", "circle-x", nil, false)
+		Notification("cash register was not found")
+	end
+	function ScanForMannequin()
+		-- upvalues: t3 (ref), s9 (ref), s10 (ref), u77 (ref)
+		local furniture = require(game.ReplicatedStorage.Fsys).load("ClientData").get_server(game.Players.LocalPlayer, "house_interior").furniture
+
+		t3 = {}
+		s9 = ""
+		s10 = ""
+		MannequinDropdown:Set({ "None" })
+
+		if not require(game.ReplicatedStorage.Fsys).load("ClientData").get_server(game.Players.LocalPlayer, "house_interior").player then
+			Notification("You must be in a house to scan")
+			u77:Set("Scan info: failed", "circle-x", nil, false)
+
+			return
+		end
+
+		if require(game.ReplicatedStorage.Fsys).load("ClientData").get_server(game.Players.LocalPlayer, "house_interior").player == game.Players.LocalPlayer then
+			Notification("you can't scan in your own house")
+			u77:Set("Scan info: failed", "circle-x", nil, false)
+
+			return
+		end
+
+		for _, v in pairs(furniture) do
+			task.wait()
+
+			if v.id == "mannequins_2024_mannequin" then
+				for k, v6 in pairs(v) do
+					if k == "outfit_version" then
+						s9 = require(game.ReplicatedStorage.Fsys).load("ClientData").get_server(game.Players.LocalPlayer, "house_interior").player
+						table.insert(t3, "Mannequin(" .. tostring(v6) .. "), Price: " .. tostring(v.price))
+					end
+				end
+			end
+		end
+
+		if isTableEmpty(t3) then
+			s9 = ""
+			u77:Set("Scan info: failed", "circle-x", nil, false)
+			Notification("No Mannequins found")
+		else
+			MannequinDropdown:Refresh(t3)
+			u77:Set("Scan info: successful", "circle-check", nil, false)
+		end
+	end
+	function PetWait(p69, p70, p71, p72)
+		-- upvalues: t4 (ref)
+		if not p69 then
+			local timestamp = tick()
+
+			repeat
+				task.wait(0.5)
+
+				local v223 = false
+
+				for k, _ in pairs(GetPetNeeds(p71)) do
+					if k == p70 then
+						v223 = true
+
+						break
+					end
+				end
+			until not v223 or tick() - timestamp >= 60 or not t4.PetAutofarm and not t4.AgePotionFarm and not t4.AutoHatchEggs
+
+			task.wait(p72)
+
+			return true
+		end
+
+		local timestamp = tick()
+
+		repeat
+			task.wait(0.5)
+		until p70 == GetPlayerInterior() or tick() - timestamp >= 10 or not t4.PetAutofarm and not t4.AgePotionFarm and not t4.AutoHatchEggs
+
+		if not (tick() - timestamp >= 10) then
+			return
+		end
+
+		return true
+	end
+	function BabyWait(p73, p74, p75)
+		-- upvalues: u40 (ref)
+		if not p73 then
+			local timestamp = tick()
+
+			repeat
+				task.wait(0.5)
+
+				local v112 = false
+
+				for k, _ in pairs(GetBabyNeeds()) do
+					if k == p74 then
+						v112 = true
+
+						break
+					end
+				end
+			until not v112 or tick() - timestamp >= 60 or not u40
+
+			task.wait(p75)
+
+			return true
+		end
+
+		local timestamp = tick()
+
+		repeat
+			task.wait(0.5)
+		until p74 == GetPlayerInterior() or tick() - timestamp >= 10 or not u40
+
+		if not (tick() - timestamp >= 10) then
+			return
+		end
+
+		return true
+	end
+	function DoBabyNeed(p76)
+		-- upvalues: u40 (ref), u57 (ref), u58 (ref), LocalPlayer (ref), u56 (ref)
+		if u40 then
+			if p76 ~= "sleepy" then
+				if p76 ~= "dirty" then
+					if p76 ~= "sick" then
+						if p76 ~= "hungry" then
+							if p76 ~= "thirsty" then
+								if p76 ~= "salon" then
+									if p76 ~= "bored" then
+										if p76 ~= "camping" then
+											if p76 ~= "beach_party" then
+												if p76 ~= "pizza_party" then
+													if p76 == "school" then
+														u56("School")
+														LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+														BabyWait(false, "school", 1)
+													end
+												else
+													u56("PizzaShop")
+													LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+													UpdatePlayerPets()
+													BabyWait(false, "pizza_party", 1)
+												end
+											else
+												u57()
+												LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.StaticMap.Beach.BeachPartyAilmentTarget.Position + Vector3.new(0, 5, 0))
+												UpdatePlayerPets()
+												BabyWait(false, "beach_party", 1)
+											end
+										else
+											u57()
+											LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Interiors:FindFirstChildWhichIsA("Model"):GetModelCFrame():ToWorldSpace(CFrame.new(0, 0, -6))
+											LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-13.1087923, 30.8056011, -1051.61743)
+											UpdatePlayerPets()
+											BabyWait(false, "camping", 1)
+										end
+									else
+										u57()
+										LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.StaticMap.Park.AilmentTarget.Position + Vector3.new(0, 5, 0))
+										UpdatePlayerPets()
+										PetWait(false, "bored", 1)
+									end
+								else
+									u56("Salon")
+									LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+									UpdatePlayerPets()
+									BabyWait(false, "salon", 1)
+								end
+							else
+								u56("Hospital")
+								LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+
+								if not GetFurniture("WaterCooler") then
+									return
+								end
+
+								local t21 = {
+									[1] = GetFurniture("WaterCooler"),
+									[2] = "UseBlock",
+									[4] = game:GetService("Players").LocalPlayer.Character
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateInteriorFurniture"):InvokeServer(unpack(t21))
+
+								local v239 = nil
+								local food = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[LocalPlayer.Name].inventory.food
+
+								for k, v in pairs(food) do
+									task.wait()
+
+									if v.id == "water_paper_cup" then
+										v239 = k
+									end
+								end
+
+								task.wait(0.5)
+
+								if not v239 then
+									return
+								end
+
+								local t22 = {
+									[1] = v239,
+									[2] = {
+										equip_as_last = false,
+										use_sound_delay = true
+									}
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/Equip"):InvokeServer(unpack(t22))
+								task.wait(0.5)
+
+								for _ = 1, 5 do
+									local t23 = {
+										[1] = v239,
+										[2] = "END"
+									}
+
+									require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/ServerUseTool"):FireServer(unpack(t23))
+									task.wait(0.3)
+								end
+							end
+						else
+							local t24 = {
+								[1] = "food",
+								[2] = "teachers_apple",
+								[3] = {
+									buy_count = 1
+								}
+							}
+
+							require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ShopAPI/BuyItem"):InvokeServer(unpack(t24))
+
+							local v247 = nil
+							local food = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[LocalPlayer.Name].inventory.food
+
+							for k, v in pairs(food) do
+								task.wait()
+
+								if v.id == "teachers_apple" then
+									v247 = k
+								end
+							end
+
+							task.wait(0.5)
+
+							if not v247 then
+								return
+							end
+
+							local t25 = {
+								[1] = v247,
+								[2] = {
+									equip_as_last = false,
+									use_sound_delay = true
+								}
+							}
+
+							require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/Equip"):InvokeServer(unpack(t25))
+							task.wait(0.5)
+
+							for _ = 1, 3 do
+								local t26 = {
+									[1] = v247,
+									[2] = "END"
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/ServerUseTool"):FireServer(unpack(t26))
+								task.wait(0.3)
+							end
+						end
+					else
+						u56("Hospital")
+						LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+
+						local u254 = false
+
+						task.spawn(function()
+							-- upvalues: u254 (ref)
+							BabyWait(false, "sick", 1)
+							u254 = true
+						end)
+						task.spawn(function()
+							-- upvalues: u254 (ref), u56 (ref)
+							while not u254 do
+								task.wait(0.1)
+
+								if not GetFurniture("Doctor") then
+									u56("Hospital")
+								end
+
+								local t27 = {
+									[1] = GetFurniture("Doctor"),
+									[2] = "UseBlock",
+									[3] = "Yes",
+									[4] = game:GetService("Players").LocalPlayer.Character
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateInteriorFurniture"):InvokeServer(unpack(t27))
+							end
+						end)
+
+						repeat
+							task.wait(0.1)
+						until u254
+					end
+				else
+					u57()
+					u58()
+
+					local u255 = false
+
+					task.spawn(function()
+						-- upvalues: u255 (ref)
+						BabyWait(false, "dirty", 1)
+						u255 = true
+					end)
+					task.spawn(function()
+						-- upvalues: u255 (ref), u57 (ref), u58 (ref), LocalPlayer (ref)
+						while not u255 do
+							task.wait(0.1)
+
+							if not GetFurniture("StylishShower") then
+								local t28 = {
+									[1] = {
+										[1] = {
+											properties = {
+												cframe = CFrame.new()
+											},
+											kind = "stylishshower"
+										}
+									}
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/BuyFurnitures"):InvokeServer(unpack(t28))
+								u57()
+								u58()
+							end
+
+							if game:GetService("Players").LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+								local t29 = {
+									[1] = game:GetService("Players").LocalPlayer,
+									[2] = GetFurniture("StylishShower"),
+									[3] = "UseBlock",
+									[4] = {
+										cframe = LocalPlayer.Character.HumanoidRootPart.CFrame
+									},
+									[5] = game:GetService("Players").LocalPlayer.Character
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateFurniture"):InvokeServer(unpack(t29))
+							end
+						end
+					end)
+
+					repeat
+						task.wait(0.1)
+					until u255
+
+					require(game.ReplicatedStorage.Fsys).load("RouterClient").get("AdoptAPI/ExitSeatStates"):FireServer()
+				end
+			else
+				u57()
+				u58()
+
+				local u256 = false
+
+				task.spawn(function()
+					-- upvalues: u256 (ref)
+					BabyWait(false, "sleepy", 1)
+					u256 = true
+				end)
+				task.spawn(function()
+					-- upvalues: u256 (ref), u57 (ref), u58 (ref), LocalPlayer (ref)
+					while not u256 do
+						task.wait(0.1)
+
+						if not GetFurniture("BasicCrib") then
+							local t30 = {
+								[1] = {
+									[1] = {
+										properties = {
+											cframe = CFrame.new()
+										},
+										kind = "basiccrib"
+									}
+								}
+							}
+
+							require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/BuyFurnitures"):InvokeServer(unpack(t30))
+							u57()
+							u58()
+						end
+
+						if game:GetService("Players").LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+							local t31 = {
+								[1] = game:GetService("Players").LocalPlayer,
+								[2] = GetFurniture("BasicCrib"),
+								[3] = "UseBlock",
+								[4] = {
+									cframe = LocalPlayer.Character.HumanoidRootPart.CFrame
+								},
+								[5] = game:GetService("Players").LocalPlayer.Character
+							}
+
+							require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateFurniture"):InvokeServer(unpack(t31))
+						end
+					end
+				end)
+
+				repeat
+					task.wait(0.1)
+				until u256
+
+				require(game.ReplicatedStorage.Fsys).load("RouterClient").get("AdoptAPI/ExitSeatStates"):FireServer()
+			end
+
+			return
+		end
+	end
+	function DoPetNeed(p77, p78)
+		-- upvalues: t4 (ref), u57 (ref), u58 (ref), LocalPlayer (ref), u56 (ref), u59 (ref), inventory (ref), u60 (ref)
+		if t4.PetAutofarm or (t4.AgePotionFarm or t4.AutoHatchEggs) then
+			local u271 = nil
+			local ok, _ = pcall(function()
+				-- upvalues: u271 (ref), p78 (ref)
+				u271 = GetCurrentPet(p78)
+			end)
+
+			if ok and u271 and u271.base then
+				if p77 ~= "sleepy" then
+					if p77 ~= "dirty" then
+						if p77 ~= "thirsty" then
+							if p77 ~= "sick" then
+								if p77 ~= "hungry" then
+									if p77 ~= "toilet" then
+										if p77 ~= "ride" then
+											if p77 ~= "play" then
+												if p77 ~= "salon" then
+													if p77 ~= "bored" then
+														if p77 ~= "camping" then
+															if p77 ~= "beach_party" then
+																if p77 ~= "pizza_party" then
+																	if p77 ~= "school" then
+																		if p77 ~= "walk" then
+																			if p77 ~= "moon" then
+																				if p77 ~= "mystery" then
+																					if p77 == "pet_me" then
+																						u59()
+																						LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+																						UpdatePlayerPets()
+
+																						for _ = 1, 5 do
+																							task.wait(1)
+
+																							local t32 = {
+																								[1] = GetCurrentPet(p78).base.pet_model.Parent
+																							}
+
+																							require(game.ReplicatedStorage.Fsys).load("RouterClient").get("AdoptAPI/FocusPet"):FireServer(unpack(t32))
+
+																							if GetCurrentPet(p78) and GetCurrentPet(p78).base then
+																								local t33 = {
+																									[1] = GetCurrentPet(p78).base.pet_model.Parent,
+																									[2] = {
+																										FocusPet = true
+																									}
+																								}
+
+																								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("PetAPI/ReplicateActivePerformances"):FireServer(unpack(t33))
+																							end
+
+																							local t34 = {
+																								[1] = p78
+																							}
+
+																							require(game.ReplicatedStorage.Fsys).load("RouterClient").get("AilmentsAPI/ProgressPetMeAilment"):FireServer(unpack(t34))
+																						end
+
+																						PetWait(false, "pet_me", p78, 1)
+																					end
+																				else
+																					u59()
+																					LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+																					UpdatePlayerPets()
+																					task.wait(1.5)
+
+																					local ok2, result = pcall(function()
+																						-- upvalues: p78 (ref)
+																						local pets = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[game.Players.LocalPlayer.Name].inventory.pets
+																						local s11 = ""
+																						local s12 = ""
+
+																						for k, v in pairs(pets) do
+																							task.wait()
+
+																							if k == p78 then
+																								s11 = v.id
+
+																								break
+																							end
+																						end
+
+																						if s11 ~= "" then
+																							local t35 = {
+																								is_pet = true,
+																								pet_unique = p78,
+																								player = game.Players.LocalPlayer,
+																								pet_id = s11
+																							}
+																							local t36 = {
+																								[1] = GetCurrentPet(p78).base.pet_model.Parent
+																							}
+																							local v444 = require(game.ReplicatedStorage.Fsys).load("RouterClient")
+
+																							if v444 then
+																								v444.get("AdoptAPI/FocusPet"):FireServer(unpack(t36))
+
+																								local t37 = {
+																									[1] = GetCurrentPet(p78).base.pet_model.Parent,
+																									[2] = {
+																										FocusPet = true
+																									}
+																								}
+
+																								v444.get("PetAPI/ReplicateActivePerformances"):FireServer(unpack(t37))
+
+																								local AilmentsClient = require(game.ReplicatedStorage.new.modules.Ailments.AilmentsClient)
+
+																								if AilmentsClient then
+																									local v447 = AilmentsClient.get_ailments_for_pet(t35)
+
+																									if v447 and v447.mystery and v447.mystery.action and v447.mystery.action.options then
+																										local v448 = v447.mystery.action.options.get_ailment_slots(v447.mystery.action.options.random_seed, AilmentsClient.get_ailments_for_pet(t35), t35)
+
+																										for k, v in pairs(v448) do
+																											task.wait()
+
+																											if k == 1 then
+																												s12 = v
+
+																												break
+																											end
+																										end
+
+																										if s12 ~= "" then
+																											local t38 = {
+																												[1] = "mystery",
+																												[2] = 1,
+																												[3] = s12
+																											}
+
+																											v444.get("AilmentsAPI/ChooseMysteryAilment"):FireServer(unpack(t38))
+
+																											return
+																										end
+
+																										warn("Could not find Mystery Ail!")
+
+																										return
+																									end
+
+																									warn("NewAil structure is invalid!")
+
+																									return
+																								end
+
+																								warn("AilmentsClient could not be loaded!")
+
+																								return
+																							end
+
+																							warn("RouterClient could not be loaded!")
+
+																							return
+																						end
+
+																						warn("Could not make mystery!")
+																					end)
+
+																					if not ok2 then
+																						warn("Something went wrong: ", result)
+																					end
+																				end
+																			else
+																				u56("MoonInterior")
+																				LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Interiors:FindFirstChildWhichIsA("Model"):GetModelCFrame():ToWorldSpace(CFrame.new(0, 0, -6))
+																				LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4023.88184, 7099.60303, 16120.4072)
+																				UpdatePlayerPets()
+																				PetWait(false, "moon", p78, 1)
+																				task.wait(1)
+																			end
+																		else
+																			u59()
+																			LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+																			UpdatePlayerPets()
+																			u60(true)
+																			PetWait(false, "walk", p78, 1)
+																			u60(false)
+																			task.wait(1)
+																		end
+																	else
+																		u56("School")
+																		LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+																		PetWait(false, "school", p78, 1)
+																	end
+																else
+																	u56("PizzaShop")
+																	LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+																	UpdatePlayerPets()
+																	PetWait(false, "pizza_party", p78, 1)
+																end
+															else
+																u57()
+																LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.StaticMap.Beach.BeachPartyAilmentTarget.Position + Vector3.new(0, 5, 0))
+																UpdatePlayerPets()
+																PetWait(false, "beach_party", p78, 1)
+															end
+														else
+															u57()
+															LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Interiors:FindFirstChildWhichIsA("Model"):GetModelCFrame():ToWorldSpace(CFrame.new(0, 0, -6))
+															LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-13.1087923, 30.8056011, -1051.61743)
+															UpdatePlayerPets()
+															PetWait(false, "camping", p78, 1)
+														end
+													else
+														u57()
+														LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.StaticMap.Park.AilmentTarget.Position + Vector3.new(0, 5, 0))
+														UpdatePlayerPets()
+														PetWait(false, "bored", p78, 1)
+													end
+												else
+													u56("Salon")
+													LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+													UpdatePlayerPets()
+													PetWait(false, "salon", p78, 1)
+												end
+											else
+												u59()
+												LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+												UpdatePlayerPets()
+
+												local v280 = nil
+												local _ = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[LocalPlayer.Name].inventory
+												local toys = inventory.toys
+
+												for k, v in pairs(toys) do
+													task.wait()
+
+													if v.id == "squeaky_bone_default" then
+														v280 = k
+													end
+												end
+
+												task.wait(0.5)
+
+												if not v280 then
+													return
+												end
+
+												task.wait(0.5)
+
+												for _ = 1, 3 do
+													local t39 = {
+														[1] = v280,
+														[2] = {
+															equip_as_last = false,
+															use_sound_delay = true
+														}
+													}
+
+													require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/Equip"):InvokeServer(unpack(t39))
+													task.wait(0.5)
+
+													local t40 = {
+														[1] = "__Enum_PetObjectCreatorType_1",
+														[2] = {
+															reaction_name = "ThrowToyReaction",
+															unique_id = v280
+														}
+													}
+
+													require(game.ReplicatedStorage.Fsys).load("RouterClient").get("PetObjectAPI/CreatePetObject"):InvokeServer(unpack(t40))
+													task.wait(5)
+												end
+
+												task.wait(0.1)
+
+												local t41 = {
+													[1] = v280
+												}
+
+												require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/Unequip"):InvokeServer(unpack(t41))
+												task.wait(1)
+											end
+										else
+											u59()
+											LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+											UpdatePlayerPets()
+
+											local v289 = nil
+											local _ = require(game.ReplicatedStorage.ClientModules.Core.ClientData).get_data()[LocalPlayer.Name].inventory
+											local strollers = inventory.strollers
+
+											for k, v in pairs(strollers) do
+												task.wait()
+
+												if v.id == "stroller-default" then
+													v289 = k
+												end
+											end
+
+											task.wait(0.5)
+
+											if not v289 then
+												return
+											end
+
+											local t42 = {
+												[1] = v289,
+												[2] = {
+													equip_as_last = false,
+													use_sound_delay = true
+												}
+											}
+
+											require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/Equip"):InvokeServer(unpack(t42))
+											task.wait(0.5)
+
+											if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("StrollerTool") then
+												return
+											end
+
+											if GetCurrentPet(p78) and GetCurrentPet(p78).base then
+												local t43 = {
+													[1] = GetCurrentPet(p78).base.pet_model.Parent,
+													[2] = game:GetService("Players").LocalPlayer.Character.StrollerTool.ModelHandle.TouchToSits.TouchToSit
+												}
+
+												require(game.ReplicatedStorage.Fsys).load("RouterClient").get("AdoptAPI/UseStroller"):InvokeServer(unpack(t43))
+											end
+
+											u60(true)
+											PetWait(false, "ride", p78, 1)
+											u60(false)
+
+											local t44 = {
+												[1] = v289
+											}
+
+											require(game.ReplicatedStorage.Fsys).load("RouterClient").get("ToolAPI/Unequip"):InvokeServer(unpack(t44))
+											task.wait(1)
+										end
+									else
+										u57()
+										u58()
+										UpdatePlayerPets()
+
+										local u297 = false
+
+										task.spawn(function()
+											-- upvalues: p78 (ref), u297 (ref)
+											PetWait(false, "toilet", p78, 1)
+											u297 = true
+										end)
+										task.spawn(function()
+											-- upvalues: u297 (ref), u57 (ref), u58 (ref), p78 (ref), LocalPlayer (ref)
+											while not u297 do
+												task.wait(0.1)
+
+												if not GetFurniture("Toilet") then
+													local t45 = {
+														[1] = {
+															[1] = {
+																properties = {
+																	cframe = CFrame.new()
+																},
+																kind = "toilet"
+															}
+														}
+													}
+
+													require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/BuyFurnitures"):InvokeServer(unpack(t45))
+													u57()
+													u58()
+												end
+
+												if GetCurrentPet(p78) and GetCurrentPet(p78).base then
+													local t46 = {
+														[1] = game:GetService("Players").LocalPlayer,
+														[2] = GetFurniture("Toilet"),
+														[3] = "Seat1",
+														[4] = {
+															cframe = LocalPlayer.Character.HumanoidRootPart.CFrame
+														},
+														[5] = GetCurrentPet(p78).base.pet_model.Parent
+													}
+
+													require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateFurniture"):InvokeServer(unpack(t46))
+												end
+											end
+										end)
+
+										repeat
+											task.wait(0.1)
+										until u297
+									end
+								else
+									u57()
+									u58()
+									UpdatePlayerPets()
+
+									local u298 = false
+
+									task.spawn(function()
+										-- upvalues: p78 (ref), u298 (ref)
+										PetWait(false, "hungry", p78, 1)
+										u298 = true
+									end)
+									task.spawn(function()
+										-- upvalues: u298 (ref), u57 (ref), u58 (ref), p78 (ref), LocalPlayer (ref)
+										while not u298 do
+											task.wait(0.1)
+
+											if not GetFurniture("AilmentsRefresh2024CheapFoodBowl") then
+												local t47 = {
+													[1] = {
+														[1] = {
+															properties = {
+																cframe = CFrame.new()
+															},
+															kind = "ailments_refresh_2024_cheap_food_bowl"
+														}
+													}
+												}
+
+												require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/BuyFurnitures"):InvokeServer(unpack(t47))
+												u57()
+												u58()
+											end
+
+											if GetCurrentPet(p78) and GetCurrentPet(p78).base then
+												local t48 = {
+													[1] = game:GetService("Players").LocalPlayer,
+													[2] = GetFurniture("AilmentsRefresh2024CheapFoodBowl"),
+													[3] = "UseBlock",
+													[4] = {
+														cframe = LocalPlayer.Character.HumanoidRootPart.CFrame
+													},
+													[5] = GetCurrentPet(p78).base.pet_model.Parent
+												}
+
+												require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateFurniture"):InvokeServer(unpack(t48))
+											end
+										end
+									end)
+
+									repeat
+										task.wait(0.1)
+									until u298
+								end
+							else
+								u56("Hospital")
+								LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+								UpdatePlayerPets()
+
+								local u299 = false
+
+								task.spawn(function()
+									-- upvalues: p78 (ref), u299 (ref)
+									PetWait(false, "sick", p78, 1)
+									u299 = true
+								end)
+								task.spawn(function()
+									-- upvalues: u299 (ref), u56 (ref)
+									while not u299 do
+										task.wait(0.1)
+
+										if not GetFurniture("Doctor") then
+											u56("Hospital")
+										end
+
+										local t49 = {
+											[1] = GetFurniture("Doctor"),
+											[2] = "UseBlock",
+											[3] = "Yes",
+											[4] = game:GetService("Players").LocalPlayer.Character
+										}
+
+										require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateInteriorFurniture"):InvokeServer(unpack(t49))
+									end
+								end)
+
+								repeat
+									task.wait(0.1)
+								until u299
+							end
+						else
+							u57()
+							u58()
+							UpdatePlayerPets()
+
+							local u300 = false
+
+							task.spawn(function()
+								-- upvalues: p78 (ref), u300 (ref)
+								PetWait(false, "thirsty", p78, 1)
+								u300 = true
+							end)
+							task.spawn(function()
+								-- upvalues: u300 (ref), u57 (ref), u58 (ref), p78 (ref), LocalPlayer (ref)
+								while not u300 do
+									task.wait(0.1)
+
+									if not GetFurniture("AilmentsRefresh2024CheapWaterBowl") then
+										local t50 = {
+											[1] = {
+												[1] = {
+													properties = {
+														cframe = CFrame.new()
+													},
+													kind = "ailments_refresh_2024_cheap_water_bowl"
+												}
+											}
+										}
+
+										require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/BuyFurnitures"):InvokeServer(unpack(t50))
+										u57()
+										u58()
+									end
+
+									if GetCurrentPet(p78) and GetCurrentPet(p78).base then
+										local t51 = {
+											[1] = game:GetService("Players").LocalPlayer,
+											[2] = GetFurniture("AilmentsRefresh2024CheapWaterBowl"),
+											[3] = "UseBlock",
+											[4] = {
+												cframe = LocalPlayer.Character.HumanoidRootPart.CFrame
+											},
+											[5] = GetCurrentPet(p78).base.pet_model.Parent
+										}
+
+										require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateFurniture"):InvokeServer(unpack(t51))
+									end
+								end
+							end)
+
+							repeat
+								task.wait(0.1)
+							until u300
+						end
+					else
+						u57()
+						u58()
+						UpdatePlayerPets()
+
+						local u301 = false
+
+						task.spawn(function()
+							-- upvalues: p78 (ref), u301 (ref)
+							PetWait(false, "dirty", p78, 1)
+							u301 = true
+						end)
+						task.spawn(function()
+							-- upvalues: u301 (ref), u57 (ref), u58 (ref), p78 (ref), LocalPlayer (ref)
+							while not u301 do
+								task.wait(0.1)
+
+								if not GetFurniture("StylishShower") then
+									local t52 = {
+										[1] = {
+											[1] = {
+												properties = {
+													cframe = CFrame.new()
+												},
+												kind = "stylishshower"
+											}
+										}
+									}
+
+									require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/BuyFurnitures"):InvokeServer(unpack(t52))
+									u57()
+									u58()
+								end
+
+								if GetCurrentPet(p78) and GetCurrentPet(p78).base then
+									local t53 = {
+										[1] = game:GetService("Players").LocalPlayer,
+										[2] = GetFurniture("StylishShower"),
+										[3] = "UseBlock",
+										[4] = {
+											cframe = LocalPlayer.Character.HumanoidRootPart.CFrame
+										},
+										[5] = GetCurrentPet(p78).base.pet_model.Parent
+									}
+
+									require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateFurniture"):InvokeServer(unpack(t53))
+								end
+							end
+						end)
+
+						repeat
+							task.wait(0.1)
+						until u301
+					end
+				else
+					u57()
+					u58()
+					UpdatePlayerPets()
+
+					local u302 = false
+
+					task.spawn(function()
+						-- upvalues: p78 (ref), u302 (ref)
+						PetWait(false, "sleepy", p78, 1)
+						u302 = true
+					end)
+					task.spawn(function()
+						-- upvalues: u302 (ref), u57 (ref), u58 (ref), p78 (ref), LocalPlayer (ref)
+						while not u302 do
+							task.wait(0.1)
+
+							if not GetFurniture("BasicCrib") then
+								local t54 = {
+									[1] = {
+										[1] = {
+											properties = {
+												cframe = CFrame.new()
+											},
+											kind = "basiccrib"
+										}
+									}
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/BuyFurnitures"):InvokeServer(unpack(t54))
+								u57()
+								u58()
+							end
+
+							if GetCurrentPet(p78) and GetCurrentPet(p78).base then
+								local t55 = {
+									[1] = game:GetService("Players").LocalPlayer,
+									[2] = GetFurniture("BasicCrib"),
+									[3] = "UseBlock",
+									[4] = {
+										cframe = LocalPlayer.Character.HumanoidRootPart.CFrame
+									},
+									[5] = GetCurrentPet(p78).base.pet_model.Parent
+								}
+
+								require(game.ReplicatedStorage.Fsys).load("RouterClient").get("HousingAPI/ActivateFurniture"):InvokeServer(unpack(t55))
+							end
+						end
+					end)
+
+					repeat
+						task.wait(0.1)
+					until u302
+				end
+
+				return
+			end
+
+			warn("pet or base not found " .. tostring(p78))
+
+			return
+		end
+	end
+	function AutoFarmAgePotionFunc()
+		-- upvalues: t4 (ref), s1 (ref), s2 (ref), u67 (ref), u40 (ref)
+		task.spawn(function()
+			-- upvalues: t4 (ref), s1 (ref), s2 (ref), u67 (ref), u40 (ref)
+			if CheckIfOtherAutofarm("AgePotionFarm") then
+				wait(0.2)
+				u67:Set(false)
+				t4.AgePotionFarm = false
+			else
+				while true do
+					SetPlatformForPlayer(true)
+					task.wait(0.1)
+
+					if not t4.AgePotionFarm then
+						break
+					end
+
+					if IsPetEgg(GetKindById(s1)) or IsPetEgg(GetKindById(s2)) then
+						task.wait(0.2)
+						Notification("You cant use eggs")
+						u67:Set(false)
+						t4.AgePotionFarm = false
+
+						return
+					end
+
+					if s1 ~= "None" then
+						if not GetPetAge(s1) or not (GetPetAge(s1) >= 6) then
+							wait(0.2)
+							u67:Set(false)
+							t4.AgePotionFarm = false
+							Notification("Main selected Pet must be fullgrown")
+						else
+							local v383 = GetPetNeeds(s1)
+
+							for k, _ in pairs(v383) do
+								task.wait()
+
+								if t4.AgePotionFarm then
+									local ok, result = pcall(function()
+										-- upvalues: k (ref), s1 (ref)
+										DoPetNeed(k, s1)
+									end)
+
+									if not ok then
+										warn("Something went wrong while doing " .. k .. ": " .. result .. " (1)")
+										task.wait(2)
+									end
+								end
+							end
+						end
+					end
+
+					if s2 ~= "None" and GetPetAge(s2) and GetPetAge(s2) >= 6 then
+						local v388 = GetPetNeeds(s2)
+
+						for k, _ in pairs(v388) do
+							task.wait()
+
+							if t4.AgePotionFarm then
+								local ok, result = pcall(function()
+									-- upvalues: k (ref), s2 (ref)
+									DoPetNeed(k, s2)
+								end)
+
+								if not ok then
+									warn("Something went wrong while doing " .. k .. ": " .. result .. " (2)")
+									task.wait(2)
+								end
+							end
+						end
+					end
+
+					if u40 and t4.AgePotionFarm then
+						local v393 = GetBabyNeeds()
+
+						for k, _ in pairs(v393) do
+							task.wait(1)
+
+							if u40 and t4.AgePotionFarm then
+								local ok, result = pcall(function()
+									-- upvalues: k (ref)
+									DoBabyNeed(k)
+								end)
+
+								if not ok then
+									warn("Something went wrong while doing " .. k .. ": " .. result .. " (Baby)")
+									task.wait(2)
+								end
+							end
+						end
+					end
+
+					SetPlatformForPlayer(false)
+					task.wait(2)
+				end
+
+				SetPlatformForPlayer(false)
+			end
+		end)
+	end
+	function AutoFarmPetFunc()
+		-- upvalues: t6 (ref), t4 (ref), s1 (ref), s2 (ref), u66 (ref), u40 (ref)
+		task.spawn(function()
+			-- upvalues: t6 (ref), t4 (ref), s1 (ref), s2 (ref), u66 (ref), u40 (ref)
+			if CheckIfOtherAutofarm("PetAutofarm") then
+				wait(0.2)
+				u66:Set(false)
+				t4.PetAutofarm = false
+			else
+				if not t6.SwitchOutPets and not t6.FarmAllPets then
+					InfoNotification("Did you forget to turn on an extra function (Switch out same pet or farm all Pets)?")
+				end
+
+				while true do
+					SetPlatformForPlayer(true)
+					task.wait(0.1)
+
+					if not t4.PetAutofarm then
+						break
+					end
+
+					if IsPetEgg(GetKindById(s1)) or IsPetEgg(GetKindById(s2)) then
+						task.wait(0.2)
+						Notification("You cant use eggs")
+						u66:Set(false)
+						t4.PetAutofarm = false
+
+						return
+					end
+
+					if GetPetAge(s1) and GetPetAge(s1) >= 6 or GetPetAge(s2) and GetPetAge(s2) >= 6 then
+						task.wait(0.2)
+						Notification("The pets must not be fullgrown")
+						u66:Set(false)
+						t4.PetAutofarm = false
+
+						return
+					end
+
+					if s1 ~= "None" then
+						local v453 = GetPetNeeds(s1)
+
+						for k, _ in pairs(v453) do
+							task.wait()
+
+							if t4.PetAutofarm then
+								local ok, result = pcall(function()
+									-- upvalues: k (ref), s1 (ref)
+									DoPetNeed(k, s1)
+								end)
+
+								if ok then
+									if (GetPetAge(s1) and t6.SwitchOutPets or t6.FarmAllPets) and GetPetAge(s1) >= 6 then
+										InfoNotification("Changing pet, if possible... please wait")
+
+										local ok3, result2 = pcall(function()
+											RemovePetBcDone(1)
+										end)
+
+										if not ok3 then
+											warn("Something went wrong while trying to switch Pet: " .. result2 .. " (1)")
+										end
+									end
+								else
+									warn("Something went wrong while doing " .. k .. ": " .. result .. " (1)")
+									task.wait(2)
+								end
+							end
+						end
+					end
+
+					if s2 ~= "None" then
+						local v460 = GetPetNeeds(s2)
+
+						for k, _ in pairs(v460) do
+							task.wait()
+
+							if t4.PetAutofarm then
+								local ok, result = pcall(function()
+									-- upvalues: k (ref), s2 (ref)
+									DoPetNeed(k, s2)
+								end)
+
+								if ok then
+									if (GetPetAge(s2) and t6.SwitchOutPets or t6.FarmAllPets) and GetPetAge(s2) >= 6 then
+										InfoNotification("Changing pet, if possible... please wait")
+
+										local ok4, result3 = pcall(function()
+											RemovePetBcDone(2)
+										end)
+
+										if not ok4 then
+											warn("Something went wrong while trying to switch Pet: " .. result3 .. " (2)")
+										end
+									end
+								else
+									warn("Something went wrong while doing " .. k .. ": " .. result .. " (2)")
+									task.wait(2)
+								end
+							end
+						end
+					end
+
+					if u40 and t4.PetAutofarm then
+						local v467 = GetBabyNeeds()
+
+						for k, _ in pairs(v467) do
+							task.wait(1)
+
+							if u40 and t4.PetAutofarm then
+								local ok, result = pcall(function()
+									-- upvalues: k (ref)
+									DoBabyNeed(k)
+								end)
+
+								if not ok then
+									warn("Something went wrong while doing " .. k .. ": " .. result .. " (Baby)")
+									task.wait(2)
+								end
+							end
+						end
+					end
+
+					SetPlatformForPlayer(false)
+					task.wait(2)
+				end
+
+				SetPlatformForPlayer(false)
+			end
+		end)
+	end
+	function AutoHatchEggsFunc()
+		-- upvalues: t6 (ref), t4 (ref), s1 (ref), s2 (ref), u68 (ref), s3 (ref), s4 (ref), u40 (ref)
+		task.spawn(function()
+			-- upvalues: t6 (ref), t4 (ref), s1 (ref), s2 (ref), u68 (ref), s3 (ref), s4 (ref), u40 (ref)
+			if CheckIfOtherAutofarm("AutoHatchEggs") then
+				wait(0.2)
+				u68:Set(false)
+				t4.AutoHatchEggs = false
+			else
+				if not t6.SwitchOutEggs and not t6.HatchAllEggs then
+					InfoNotification("Did you forget to turn on an extra function (Switch out same Egg or Hatch all Eggs)?")
+				end
+
+				while true do
+					SetPlatformForPlayer(true)
+					task.wait(0.1)
+
+					if not t4.AutoHatchEggs then
+						break
+					end
+
+					if not IsPetEgg(GetKindById(s1)) and not IsPetEgg(GetKindById(s2)) then
+						task.wait(0.2)
+						Notification("You must use eggs")
+						u68:Set(false)
+						t4.AutoHatchEggs = false
+
+						return
+					end
+
+					if s1 ~= "None" then
+						local v350 = GetPetNeeds(s1)
+
+						for k, _ in pairs(v350) do
+							task.wait()
+
+							if t4.AutoHatchEggs then
+								s3 = s1
+								s4 = s2
+
+								local ok, result = pcall(function()
+									-- upvalues: k (ref), s1 (ref)
+									DoPetNeed(k, s1)
+								end)
+
+								if ok then
+									task.wait(2)
+
+									local v355 = false
+
+									if IsEggNotThere(s1) then
+										InfoNotification("Changing egg, if possible... please wait")
+
+										local ok5, result4 = pcall(function()
+											-- upvalues: s3 (ref), s4 (ref)
+											RemovePetBcDone(1, GetKindById(s3), s3, s4)
+										end)
+
+										if ok5 then
+											v355 = true
+										else
+											warn("Something went wrong while trying to switch Egg: " .. result4 .. " (1)")
+										end
+									end
+
+									if IsEggNotThere(s2) then
+										InfoNotification("Changing egg, if possible... please wait")
+
+										local ok6, result5 = pcall(function()
+											-- upvalues: s4 (ref), s3 (ref)
+											RemovePetBcDone(2, GetKindById(s4), s3, s4)
+										end)
+
+										if ok6 then
+											v355 = true
+										else
+											warn("Something went wrong while trying to switch Egg: " .. result5 .. " (2)")
+										end
+									end
+
+									if v355 then
+										break
+									end
+								else
+									warn("Something went wrong while doing " .. k .. ": " .. result .. " (1)")
+									task.wait(2)
+								end
+
+								s3 = ""
+								s4 = ""
+							end
+						end
+					end
+
+					if s2 ~= "None" then
+						local v360 = GetPetNeeds(s2)
+
+						for k, _ in pairs(v360) do
+							task.wait()
+
+							if t4.AutoHatchEggs then
+								s3 = s1
+								s4 = s2
+
+								local ok, result = pcall(function()
+									-- upvalues: k (ref), s2 (ref)
+									DoPetNeed(k, s2)
+								end)
+
+								if ok then
+									task.wait(2)
+
+									local v365 = false
+
+									if IsEggNotThere(s1) then
+										InfoNotification("Changing egg, if possible... please wait")
+
+										local ok7, result6 = pcall(function()
+											-- upvalues: s3 (ref), s4 (ref)
+											RemovePetBcDone(1, GetKindById(s3), s3, s4)
+										end)
+
+										if ok7 then
+											v365 = true
+										else
+											warn("Something went wrong while trying to switch Egg: " .. result6 .. " (1)")
+										end
+									end
+
+									if IsEggNotThere(s2) then
+										InfoNotification("Changing egg, if possible... please wait")
+
+										local ok8, result7 = pcall(function()
+											-- upvalues: s4 (ref), s3 (ref)
+											RemovePetBcDone(2, GetKindById(s4), s3, s4)
+										end)
+
+										if ok8 then
+											v365 = true
+										else
+											warn("Something went wrong while trying to switch Egg: " .. result7 .. " (2)")
+										end
+									end
+
+									if v365 then
+										break
+									end
+								else
+									warn("Something went wrong while doing " .. k .. ": " .. result .. " (2)")
+									task.wait(2)
+								end
+
+								s3 = ""
+								s4 = ""
+							end
+						end
+					end
+
+					if u40 and t4.AutoHatchEggs then
+						local v370 = GetBabyNeeds()
+
+						for k, _ in pairs(v370) do
+							task.wait(1)
+
+							if u40 and t4.AutoHatchEggs then
+								local ok, result = pcall(function()
+									-- upvalues: k (ref)
+									DoBabyNeed(k)
+								end)
+
+								if not ok then
+									warn("Something went wrong while doing " .. k .. ": " .. result .. " (Baby)")
+									task.wait(2)
+								end
+							end
+						end
+					end
+				end
+
+				SetPlatformForPlayer(false)
+			end
+		end)
+	end
+	function DoMysteryPetNeed()
+		-- upvalues: u70 (ref), u39 (ref)
+		local ok, _ = pcall(function()
+			require(game.ReplicatedStorage.new.modules.LegacyLoad)("InventoryDB")
+		end)
+
+		if ok then
+			u39 = true
+		else
+			task.wait(0.2)
+			u70:Set(false)
+			u39 = false
+			Notification("Your executer doesnt support mystery pet need or the version is too old")
+		end
+	end
+	function Change()
+		-- upvalues: u16 (ref)
+		if not u16 then
+			spawn(function()
+				-- upvalues: u16 (ref)
+				u16 = true
+				task.wait(1)
+				u16 = false
+			end)
+		end
+	end
+
+	game.Players.LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("AltCurrencyIndicatorApp"):WaitForChild("CurrencyIndicator"):WaitForChild("Container"):WaitForChild("Amount").Changed:Connect(function(property)
+		if property == "Text" then
+			Change()
+		end
+	end)
+
+	function FarmShootingStar()
+		-- upvalues: t7 (ref), u16 (ref)
+		if t7.ShootingStar then
+			wait(0.2)
+			Notification("Player is already farming shooting stars. Please wait until it is done!")
+		else
+			t7.ShootingStar = true
+			InfoNotification("Farming")
+
+			for i = 1, 150 do
+				if not u16 then
+					task.wait(0.01)
+				else
+					task.wait(1.5)
+				end
+
+				local t56 = {
+					[1] = "MainMap",
+					[2] = tostring(i),
+					[3] = true
+				}
+
+				require(game.ReplicatedStorage.Fsys).load("RouterClient").get("MoonAPI/ShootingStarCollected"):FireServer(unpack(t56))
+				task.wait(0.01)
+			end
+
+			for i = 1, 150 do
+				if not u16 then
+					task.wait(0.01)
+				else
+					task.wait(1.5)
+				end
+
+				local t57 = {
+					[1] = "MoonInterior",
+					[2] = tostring(i),
+					[3] = true
+				}
+
+				require(game.ReplicatedStorage.Fsys).load("RouterClient").get("MoonAPI/ShootingStarCollected"):FireServer(unpack(t57))
+				task.wait(0.01)
+			end
+
+			InfoNotification("All possible shooting stars farmed!")
+			t7.ShootingStar = false
+		end
+	end
+
+	RunService.Heartbeat:Connect(function()
+		if workspace:FindFirstChild("StaticMap") and workspace:FindFirstChild("StaticMap"):FindFirstChild("Campsite") and workspace:FindFirstChild("StaticMap"):FindFirstChild("Campsite"):FindFirstChild("CampsiteOrigin") then
+			workspace.StaticMap.Campsite.CampsiteOrigin:Destroy()
+		end
+	end)
+
+	return
+end
+
+while true do
+	wait(1)
+end
